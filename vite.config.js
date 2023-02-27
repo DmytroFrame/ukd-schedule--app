@@ -74,4 +74,15 @@ const vitePWA = VitePWA({
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react(), vitePWA],
+  build: {
+    rollupOptions: {
+      output: {
+        assetFileNames: 'ukd-schedule--pwa/assets/[ext]/[name][extname]',
+        chunkFileNames: 'ukd-schedule--pwa/assets/chunks/[name].[hash].js',
+        entryFileNames: 'ukd-schedule--pwa/assets/js/[name].js',
+
+      }
+    }
+  }
+  
 });
