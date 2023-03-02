@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
 import "./App.css";
 import { getSchedules } from "./api/getSchedules";
+
 import Schedule from "./components/Schedule/Schedule";
 import WeekBar from "./components/WeekBar/WeekBar";
+import { mockSchedules } from "./api/mockSchedules";
 
 function App() {
-  const [schedules, setSchedules] = useState([]);
-  const [currentSchedule, setCurrentSchedule] = useState({})
+  const [schedules, setSchedules] = useState(mockSchedules);
+  const [currentSchedule, setCurrentSchedule] = useState(mockSchedules[0])
 
 
   useEffect(() => {
@@ -15,7 +17,7 @@ function App() {
 
   return (
     <div className="App">
-      <WeekBar schedules={schedules} setCurrentSchedule= {setCurrentSchedule}/>
+      <WeekBar schedules={schedules} currentSchedule={currentSchedule} setCurrentSchedule= {setCurrentSchedule}/>
       <Schedule currentSchedule={currentSchedule}/>
     </div>
   );

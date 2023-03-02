@@ -8,8 +8,7 @@ export default function ScheduleItem({ lesson }) {
   return (
     <div className="ScheduleItemBlock">
       <div className="info-block">
-        <p>{lesson.date.replace('-', ' ')}</p>
-        {/* <p><strong>{lesson.index}</strong></p> */}
+        <p>{lesson.date.replaceAll('-', ' ')}</p>
       </div>
 
       <div className="text-block">
