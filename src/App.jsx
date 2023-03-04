@@ -3,6 +3,9 @@ import "./App.css";
 import {useQuery} from "react-query";
 import {Alert, Divider, Space, Spin, Tabs, Timeline, Typography} from 'antd';
 import axios from "axios";
+import ErrorAlert from "./components/Ui/ErrorAlert.jsx";
+import LoadingSpinner from "./components/Ui/LoadingSpinner.jsx";
+import LessonsTab from "./components/LessonsTabs.jsx";
 const { Title, Paragraph } = Typography;
 
 function App() {
@@ -21,48 +24,11 @@ function App() {
               Better go to stroika
           </Paragraph>
       </Typography>
+      <Divider />
 
-        <Divider />
-
-        { error &&
-            <Space
-                direction="vertical"
-                style={{
-                    width: '100%',
-                }}
-            ><Alert
-            message="Error"
-            description="Не вдається получити дані з серверу"
-            type="error"
-            showIcon
-        />
-            </Space>
-        }
-
-        { isLoading && (
-            <Space size="middle" style={{ marginTop: '50px'}}>
-                <Spin size="large" />
-            </Space>
-        )
-        }
-
-        {
-            !isLoading && (
-                <Tabs
-                    tabPosition={'left'}
-                    items={data?.map(_data => ({
-                        label: _data.weekName,
-                        key: Math.random(),
-                        children: <Timeline
-                            reverse
-                            items={_data.lessons.map(lesson => ({children: `${lesson.date} - ${lesson.title}`}))}
-                        />,
-                    }))}
-                />
-            )
-        }
-
-
+      { error && <ErrorAlert /> }
+      { isLoading && <LoadingSpinner /> }
+      { data && <LessonsTab lessonsData={data} />}
     </div>
   );
 }
