@@ -11,7 +11,7 @@ const { Title, Paragraph } = Typography;
 function App() {
   const { isLoading, error, data } = useQuery("schedules", () =>
       axios
-          .get("https://api.dmytroframe.site/ukd/schedules?group=ІПЗс-19")
+          .get("https://api.dmytroframe.site/ukd/schedules?group=МІПЗс-23")
           .then((response) => response.data)
   );
 
