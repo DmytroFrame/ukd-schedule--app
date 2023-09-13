@@ -6,19 +6,20 @@ import axios from "axios";
 import ErrorAlert from "./components/Ui/ErrorAlert.jsx";
 import LoadingSpinner from "./components/Ui/LoadingSpinner.jsx";
 import LessonsTab from "./components/LessonsTabs.jsx";
+import { SchedulesService } from "./services/schedules.service";
 const { Title, Paragraph } = Typography;
 
 function App() {
-  const [isDarkMode, setIsDarkMode] = useState(window.matchMedia("(prefers-color-scheme: dark)").matches);
+  const [isDarkMode, setIsDarkMode] = useState(
+    window.matchMedia("(prefers-color-scheme: dark)").matches
+  );
 
   window
     .matchMedia("(prefers-color-scheme: dark)")
     .addEventListener("change", (event) => setIsDarkMode(event.matches));
 
   const { isLoading, error, data } = useQuery("schedules", () =>
-    axios
-      .get("https://api.dmytroframe.site/ukd/schedules?group=МІПЗс-23")
-      .then((response) => response.data)
+    SchedulesService.getSchedules().then((response) => response)
   );
 
   return (
