@@ -5,13 +5,13 @@ export class SchedulesService {
   static storageKey = "scheduleData";
 
   static async getSchedules(group = "МІПЗс-23") {
-    const startAt = new Date();
+    const startAt = new Date().toJSON().split('T')[0];
     const endAt = new Date();
     endAt.setDate(endAt.getDate() + 7);
 
     try {
       const req = await axios.get(this.url, {
-        params: { group, startAt, endAt },
+        params: { group, startAt, endAt: endAt.toJSON().split('T')[0] },
       });
 
       localStorage.setItem(this.storageKey, JSON.stringify(req.data));
