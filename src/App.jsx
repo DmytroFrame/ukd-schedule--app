@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import { useQuery } from "react-query";
 import { Divider, Typography, ConfigProvider, theme } from "antd";
@@ -6,7 +6,6 @@ import ErrorAlert from "./components/Ui/ErrorAlert.jsx";
 import LoadingSpinner from "./components/Ui/LoadingSpinner.jsx";
 import LessonsTab from "./components/LessonsTabs.jsx";
 import { SchedulesService } from "./services/schedules.service";
-import ReactGA from "react-ga";
 
 const { Title, Paragraph } = Typography;
 
@@ -22,10 +21,6 @@ function App() {
   const { isLoading, error, data } = useQuery("schedules", () =>
     SchedulesService.getSchedules().then((response) => response)
   );
-
-  useEffect(() => {
-    ReactGA.pageview(window.location.pathname + window.location.search);
-  }, []);
 
   return (
     <ConfigProvider
