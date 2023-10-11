@@ -29,10 +29,11 @@ function App() {
     })
   );
 
-  function saveGroup(value) {
+  async function saveGroup(value) {
+    const data = await SchedulesService.getSchedules(value);
+    setSchedules(data);
     setSelectedGroup(value);
     GroupsService.setSelectedGroup(value);
-    SchedulesService.getSchedules(value).then((data) => setSchedules(data));
   }
 
   function onChangeGroup() {
