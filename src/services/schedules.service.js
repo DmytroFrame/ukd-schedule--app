@@ -1,10 +1,11 @@
 import axios from "axios";
+import { GroupsService } from "./groups.service";
 
 export class SchedulesService {
   static url = "https://api.dmytroframe.site/ukd/schedules";
   static storageKey = "scheduleData";
 
-  static async getSchedules(group = "МІПЗс-23") {
+  static async getSchedules(group = GroupsService.getSelectedGroup()) {
     const startAt = new Date().toJSON().split('T')[0];
     const endAt = new Date();
     endAt.setDate(endAt.getDate() + 7);
