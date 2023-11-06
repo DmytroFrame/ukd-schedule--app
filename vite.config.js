@@ -1,6 +1,7 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { VitePWA } from "vite-plugin-pwa";
+import mkcert from 'vite-plugin-mkcert'
 
 const vitePWA = VitePWA({
   registerType: "autoUpdate",
@@ -73,6 +74,7 @@ const vitePWA = VitePWA({
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), vitePWA],
+  plugins: [react(), vitePWA, mkcert()],
+  server: { port: 3000, https: true },
   // base: '/ukd-schedule--pwa/'
 });

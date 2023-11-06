@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" translate="no">
   <head>
     <meta charset="UTF-8" />
     <!-- <link rel="icon" type="image/svg+xml" href="/vite.svg" /> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="google" content="notranslate" />
     <link
       rel="apple-touch-icon"
       sizes="180x180"
@@ -40,6 +41,7 @@
     <title>UKD Schedule</title>
   </head>
   <body>
+    <button id="install" hidden>Install</button>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
     <!-- Google tag (gtag.js) -->
@@ -50,6 +52,16 @@
       }
       gtag("js", new Date());
       gtag("config", "G-W138EZNHXD");
+    </script>
+    <script>
+      let installPrompt = null;
+      const installButton = document.querySelector("#install");
+
+      window.addEventListener("beforeinstallprompt", (event) => {
+        event.preventDefault();
+        installPrompt = event;
+        installButton.removeAttribute("hidden");
+      });
     </script>
   </body>
 </html>

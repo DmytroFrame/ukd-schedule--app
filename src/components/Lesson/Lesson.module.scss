@@ -1,0 +1,30 @@
+.lessonContainer {
+  display: flex;
+  border-radius: 7px;
+  overflow: hidden;
+  zoom: 90%;
+}
+
+.lessonTitle {
+  background-color: white;
+  width: 100%;
+  text-align: left;
+  padding: 10px;
+  word-break: break-all;
+}
+
+.lessonInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: center;
+  padding: 10px;
+  min-width: 100px;
+  margin-left: auto;
+  background-color: rgb(133, 27, 27);
+  color: white;
+}
+
+.lessonInfoClassroom {
+  font-size: 18px;
+}
