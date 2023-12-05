@@ -7,8 +7,7 @@ const vitePWA = VitePWA({
   manifest: {
     name: "UKD Schedule",
     short_name: "UKD Schedule",
-    theme_color: "#fff",
-    background_color: "#000",
+    background_color: "#730909",
     display: "standalone",
     orientation: "portrait",
     start_url: ".",
