@@ -2,7 +2,7 @@ import axios from "axios";
 import { GroupsService } from "./groups.service";
 
 export class SchedulesService {
-  static url = "https://api.dmytroframe.site/ukd/schedules";
+  static url = "https://api.dmytroframe.com/ukd/schedules";
   static storageKey = "scheduleData";
 
   static async getSchedules(group = GroupsService.getSelectedGroup()) {

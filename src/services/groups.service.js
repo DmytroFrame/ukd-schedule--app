@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export class GroupsService {
-  static url = "https://api.dmytroframe.site/ukd/groups";
+  static url = "https://api.dmytroframe.com/ukd/groups";
   static selectedGroupKey = "selectedGroup";
 
   static async getAll() {
