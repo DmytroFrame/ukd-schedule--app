@@ -1,3 +1,3 @@
-<p align="center" width="100%">
-    <img src=".github/assets/phone-app.png" width="35%" >
-</p>
+[![Official trailer of the Pidval Project for VR Headsets]
+(https://img.youtube.com/vi/kZzh4cmTnYI/0.jpg)]
+(https://www.youtube.com/watch?v=kZzh4cmTnYI "Official trailer of the Pidval Project for VR Headsets)
