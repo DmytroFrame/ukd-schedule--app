@@ -1,81 +1,41 @@
 import React, { useState } from "react";
+import { Divider } from "antd";
 import "./App.css";
-import { useQuery, useQueryClient } from "react-query";
-import { Divider, Typography, ConfigProvider, theme } from "antd";
-import ErrorAlert from "./components/Ui/ErrorAlert.jsx";
-import LoadingSpinner from "./components/Ui/LoadingSpinner.jsx";
-import LessonsTab from "./components/LessonsTabs.jsx";
-import { SchedulesService } from "./services/schedules.service";
-import { GroupsService } from "./services/groups.service";
-import SelectGroup from "./components/SelectGroup";
+import { FindOptionService } from "./services/find-option.service.js";
+import AntdConfigProvider from "./components/AntdConfigProvider.jsx";
+import SetupScreen from "./screens/SetupScreen.jsx";
+import AppTitle from "./components/AppTitle.jsx";
+import Footer from "./components/Footer.jsx";
+import ScheduleScreen from "./screens/ScheduleScreen.jsx";
 
-const { Title, Paragraph } = Typography;
-
-function App() {
-  const [selectedGroup, setSelectedGroup] = useState(null);
-  const [schedules, setSchedules] = useState([]);
-  const [isDarkMode, setIsDarkMode] = useState(
-    window.matchMedia("(prefers-color-scheme: dark)").matches
+export default function App() {
+  const [findOptions, setFindOptions] = useState(
+    FindOptionService.getFindOption()
   );
 
-  window
-    .matchMedia("(prefers-color-scheme: dark)")
-    .addEventListener("change", (event) => setIsDarkMode(event.matches));
-
-  const { isLoading, error, data } = useQuery("schedules", () =>
-    SchedulesService.getSchedules().then((data) => {
-      setSchedules(data);
-      return data;
-    })
-  );
-
-  async function saveGroup(value) {
-    const data = await SchedulesService.getSchedules(value);
-    setSchedules(data);
-    setSelectedGroup(value);
-    GroupsService.setSelectedGroup(value);
+  function onChangeFindOptions(options) {
+    FindOptionService.setFindOption(options);
+    setFindOptions(options);
   }
-
-  function onChangeGroup() {
-    setSelectedGroup(null);
-  }
-
-  React.useEffect(() => {
-    setSelectedGroup(GroupsService.getSelectedGroup());
-  }, []);
 
   return (
-    <ConfigProvider
-      theme={{
-        algorithm: isDarkMode ? theme.darkAlgorithm : theme.defaultAlgorithm,
-      }}
-    >
+    <AntdConfigProvider>
       <div className="App">
-        <Typography>
-          <Title>Pidval project presents:</Title>
-          <Paragraph>
-            The most useless scheduler in your life. Better go to stroika
-          </Paragraph>
-        </Typography>
+        <AppTitle />
         <Divider />
 
-        {selectedGroup && (
-          <div>
-            {error && <ErrorAlert />}
-            {isLoading && <LoadingSpinner />}
-            {data && <LessonsTab lessonsData={schedules} />}
-
-            <div style={{ textAlign: "left", marginLeft: 25 }}>
-              <Typography.Link onClick={onChangeGroup} href="#">
-                &larr; Change group
-              </Typography.Link>
-            </div>
-          </div>
+        {findOptions === null && (
+          <SetupScreen saveFindOptions={onChangeFindOptions} />
         )}
-        {!selectedGroup && <SelectGroup saveGroup={saveGroup} />}
+
+        {findOptions !== null && (
+          <ScheduleScreen
+            findOptions={findOptions}
+            changeFindOptions={onChangeFindOptions}
+          />
+        )}
       </div>
-    </ConfigProvider>
+      <Footer />
+    </AntdConfigProvider>
   );
 }
-
-export default App;

@@ -10,3 +10,10 @@ html {
   margin-right: calc(-1 * (100vw - 100%));
 }
 
+footer {
+  position: fixed;
+  bottom: 20px;
+  width: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+}

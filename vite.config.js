@@ -74,5 +74,7 @@ const vitePWA = VitePWA({
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react(), vitePWA],
-  // base: '/ukd-schedule--pwa/'
+  server: {
+    port: 3000,
+  },
 });

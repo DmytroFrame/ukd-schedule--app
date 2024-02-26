@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Clock() {
+export default function ClockIcon() {
   return (
     <svg
       viewBox="64 64 896 896"

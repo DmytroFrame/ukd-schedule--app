@@ -1,0 +1,17 @@
+.selectByContainer {
+  display: flex;
+  justify-content: space-around;
+}
+
+.selectByButton {
+  width: 150px;
+  height: 170px;
+  border-radius: 20px;
+  font-weight: 400;
+}
+
+.emojiButton {
+  font-size: 90px;
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
