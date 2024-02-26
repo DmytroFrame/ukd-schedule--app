@@ -21,20 +21,28 @@ export default function App() {
   return (
     <AntdConfigProvider>
       <div className="App">
-        <AppTitle />
-        <Divider />
+        <header>
+          <AppTitle />
+          <Divider />
+        </header>
 
-        {findOptions === null && (
-          <SetupScreen saveFindOptions={onChangeFindOptions} />
-        )}
+        <main>
+          {findOptions === null && (
+            <SetupScreen saveFindOptions={onChangeFindOptions} />
+          )}
 
-        {findOptions !== null && (
-          <ScheduleScreen
-            findOptions={findOptions}
-            changeFindOptions={onChangeFindOptions}
-          />
-        )}
+          {findOptions !== null && (
+            <ScheduleScreen
+              findOptions={findOptions}
+              changeFindOptions={onChangeFindOptions}
+            />
+          )}
+        </main>
+
+        <br />
+        <br />
       </div>
+
       <Footer />
     </AntdConfigProvider>
   );
