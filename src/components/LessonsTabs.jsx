@@ -23,7 +23,11 @@ export default function LessonsTab({ lessonsData }) {
                 dot: isHaveClock ? <ClockIcon /> : "",
                 children: (
                   <>
-                    {lesson.date} - <span style={style}>{lesson.title}</span>
+                    {lesson.date} -{" "}
+                    <span
+                      dangerouslySetInnerHTML={{ __html: lesson.rawTitle }}
+                      style={style}
+                    ></span>
                   </>
                 ),
               };
