@@ -17,9 +17,10 @@ export default function SelectByStudent({ saveByGroup, back }) {
 
   return (
     <div>
-      <Typography.Title style={{ marginBottom: 20 }} level={3}>
+      <Typography.Title style={{ marginBottom: 0, marginTop: 0 }} level={3}>
         Choose your group
       </Typography.Title>
+      <br />
       <FindInput
         data={groups}
         onSelect={setSelectedGroup}
@@ -36,7 +37,7 @@ export default function SelectByStudent({ saveByGroup, back }) {
       >
         Save
       </Button>
-      <br /> <br />
+
       <BackButton onClick={back} />
     </div>
   );

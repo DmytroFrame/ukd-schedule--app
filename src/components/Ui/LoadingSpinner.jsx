@@ -6,5 +6,6 @@ export default function LoadingSpinner() {
     <Space size="middle" style={{ marginTop: "50px" }}>
       <Spin size="large" />
     </Space>
+    
   );
 }

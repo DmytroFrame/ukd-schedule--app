@@ -17,9 +17,10 @@ export default function SelectByTeacher({ saveByTeacher, back }) {
 
   return (
     <div>
-      <Typography.Title style={{ marginBottom: 20 }} level={3}>
+      <Typography.Title style={{ marginBottom: 0, marginTop: 0 }} level={3}>
         Choose your name
       </Typography.Title>
+      <br />
       <FindInput
         data={teachers}
         onSelect={setSelectedTeacher}
@@ -37,7 +38,7 @@ export default function SelectByTeacher({ saveByTeacher, back }) {
       >
         Save
       </Button>
-      <br /> <br />
+
       <BackButton onClick={back} />
     </div>
   );

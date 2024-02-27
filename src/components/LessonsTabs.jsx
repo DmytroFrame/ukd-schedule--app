@@ -6,7 +6,6 @@ import { getLessonAtribut } from "../utils/functions/getLessonAtribut";
 export default function LessonsTab({ lessonsData }) {
   return (
     <Tabs
-      style={{ marginBottom: 25 }}
       tabPosition={"left"}
       items={lessonsData?.map((_data) => ({
         label: _data.weekName,

@@ -28,7 +28,12 @@ export class SchedulesService {
 
       return req.data;
     } catch (error) {
-      console.error(error)
+      console.error(error);
+
+      if (error.response.status === 500) {
+        throw new Error(JSON.stringify(error.response.data));
+      }
+
       return JSON.parse(localStorage.getItem(this.storageKey));
     }
   }

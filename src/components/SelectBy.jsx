@@ -14,9 +14,11 @@ export default function SelectBy({ setSelectBy }) {
 
   return (
     <>
-      <Typography.Title style={{ marginBottom: 20 }} level={2}>
+      <Typography.Title style={{ marginBottom: 0, marginTop: 0 }} level={2}>
         Are you ?
       </Typography.Title>
+
+      <br />
 
       <div className={styeles.selectByContainer}>
         <Button
