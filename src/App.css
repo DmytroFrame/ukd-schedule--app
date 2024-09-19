@@ -20,3 +20,8 @@ html {
 footer {
   flex: 1;
 }
+
+:where(.css-dev-only-do-not-override-zzxjdm).ant-timeline
+  .ant-timeline-item-head {
+  background-color: transparent !important;
+}
