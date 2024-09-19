@@ -20,8 +20,9 @@ export class SchedulesService {
         },
       });
 
-      if (typeof req.data === "object" && !Array.isArray(req.data)) {
-        req.data = [];
+      if (!Array.isArray(req.data)) {
+        req.status = 500;
+        throw { response: req };
       }
 
       localStorage.setItem(this.storageKey, JSON.stringify(req.data));
@@ -29,6 +30,11 @@ export class SchedulesService {
       return req.data;
     } catch (error) {
       console.error(error);
+
+      try {
+        const data = JSON.parse(localStorage.getItem(this.storageKey));
+        if (data.length) return data;
+      } catch {}
 
       if (error.response.status === 500) {
         throw new Error(JSON.stringify(error.response.data));

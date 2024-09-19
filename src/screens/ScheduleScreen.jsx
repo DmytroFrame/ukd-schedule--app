@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Empty, Typography } from "antd";
+import { Empty } from "antd";
 import LessonsTabs from "../components/LessonsTabs";
 import { SchedulesService } from "../services/schedules.service";
 import BackButton from "../components/BackButton";
@@ -12,9 +12,12 @@ export default function ScheduleScreen({ findOptions, changeFindOptions }) {
   const [error, setError] = useState(null);
 
   function getSchedule() {
+    document.title = `UKD Schedule | ${findOptions.value}`;
+
     if (findOptions.type === "group") {
       return SchedulesService.getSchedules({ group: findOptions.value });
     }
+
     if (findOptions.type === "teacher") {
       return SchedulesService.getSchedules({ teacher: findOptions.value });
     }

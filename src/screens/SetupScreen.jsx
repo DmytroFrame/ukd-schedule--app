@@ -19,6 +19,7 @@ export default function SetupScreen({ saveFindOptions }) {
   }
 
   function onBack() {
+    document.title = `UKD Schedule`;
     onChangeSelectScreen("none");
   }
 
@@ -26,7 +27,9 @@ export default function SetupScreen({ saveFindOptions }) {
     saveFindOptions({ type, value });
   }
 
-  // useEffect(() => callAnimation(), []);
+  useEffect(() => {
+    document.title = `UKD Schedule`;
+  }, []);
 
   return (
     <div className={useAnimationClass ? styles.changeAnimation : ""}>
