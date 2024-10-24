@@ -27,11 +27,30 @@ export default function ScheduleScreen({ findOptions, changeFindOptions }) {
     changeFindOptions(null);
   }
 
+  function playSecretAudio(audio) {
+    if (
+      localStorage.getItem("findOptions").includes("Черкас Ілля Анатолійович")
+    ) {
+      audio.volume = 0.07;
+
+      audio.play().catch((error) => {
+        console.error("Не вдалося відтворити аудіо:", error);
+      });
+    }
+  }
+
   useEffect(() => {
     getSchedule()
       .then((data) => setSchedules(data))
       .catch((err) => setError(err))
       .finally(() => setIsLoading(false));
+
+    const audio = new Audio("/assets/audios/Gats.aac");
+    playSecretAudio(audio);
+
+    return () => {
+      if (audio) audio.pause();
+    };
   }, []);
 
   return (

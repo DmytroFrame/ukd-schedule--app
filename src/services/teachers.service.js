@@ -13,7 +13,7 @@ export class TeachersService {
         throw { response: request };
       }
 
-      return request.data;
+      return request.data.filter((item) => !item.startsWith("!"));
     } catch (error) {
       console.error(error);
 
