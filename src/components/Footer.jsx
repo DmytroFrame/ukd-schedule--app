@@ -55,6 +55,7 @@ export default function Footer() {
       <Modal
         title="Authors"
         open={isModalOpen}
+        centered
         onCancel={handleCancel}
         width={320}
         footer={[

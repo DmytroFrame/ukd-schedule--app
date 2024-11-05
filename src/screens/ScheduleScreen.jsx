@@ -27,16 +27,10 @@ export default function ScheduleScreen({ findOptions, changeFindOptions }) {
     changeFindOptions(null);
   }
 
-  function playSecretAudio(audio) {
-    if (
-      localStorage.getItem("findOptions").includes("Черкас Ілля Анатолійович")
-    ) {
-      audio.volume = 0.07;
-
-      audio.play().catch((error) => {
-        console.error("Не вдалося відтворити аудіо:", error);
-      });
-    }
+  function isSecretUser() {
+    return localStorage
+      .getItem("findOptions")
+      .includes("Черкас Ілля Анатолійович");
   }
 
   useEffect(() => {
@@ -45,12 +39,16 @@ export default function ScheduleScreen({ findOptions, changeFindOptions }) {
       .catch((err) => setError(err))
       .finally(() => setIsLoading(false));
 
-    const audio = new Audio("/assets/audios/Gats.aac");
-    playSecretAudio(audio);
+    if (isSecretUser()) {
+      const audio = new Audio("/assets/audios/Gats.aac");
 
-    return () => {
-      if (audio) audio.pause();
-    };
+      audio.volume = 0.07;
+      audio.play().catch((error) => {
+        console.error("Не вдалося відтворити аудіо:", error);
+      });
+
+      return () => audio.pause();
+    }
   }, []);
 
   return (
