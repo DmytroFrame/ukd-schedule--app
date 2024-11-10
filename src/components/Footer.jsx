@@ -2,9 +2,11 @@ import React from "react";
 import { Button, Modal, Typography } from "antd";
 import {
   GlobalOutlined,
+  InfoCircleOutlined,
+  MessageOutlined,
   ShareAltOutlined,
-  UserOutlined,
 } from "@ant-design/icons";
+import AboutScreen from "../screens/AboutScreen";
 
 const { Link, Text } = Typography;
 
@@ -40,20 +42,22 @@ export default function Footer() {
       <Text> - </Text>
 
       <Link onClick={showModal}>
-        <UserOutlined /> Authors
+        <InfoCircleOutlined /> About
       </Link>
 
       <Text> - </Text>
 
-      <Link
-        href="http://195.162.83.28/cgi-bin/timetable.cgi?n=700"
-        target="_blank"
-      >
+      <Link href={import.meta.env.VITE_SOURCE_LINK} target="_blank">
         <GlobalOutlined /> Source
       </Link>
 
+      <Text> - </Text>
+
+      <Link href={import.meta.env.VITE_CHAT_LINK} target="_blank">
+        <MessageOutlined /> Chat
+      </Link>
+
       <Modal
-        title="Authors"
         open={isModalOpen}
         centered
         onCancel={handleCancel}
@@ -64,29 +68,7 @@ export default function Footer() {
           </Button>,
         ]}
       >
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-          }}
-        >
-          <Text>
-            <Link href="https://github.com/DmytroFrame" target="_blank">
-              Dmytro Kostyshyn
-            </Link>
-            {" Backend"}
-          </Text>
-
-          <Text>
-            <Link
-              href="https://linkedin.com/in/vladyslav-lutchyn/"
-              target="_blank"
-            >
-              Vladyslav Lutchyn
-            </Link>
-            {" Frontend"}
-          </Text>
-        </div>
+        <AboutScreen />
       </Modal>
     </footer>
   );

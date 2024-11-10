@@ -77,4 +77,7 @@ export default defineConfig({
   server: {
     port: 3000,
   },
+  define: {
+    BUILD_DATE: new Date(),
+  },
 });
