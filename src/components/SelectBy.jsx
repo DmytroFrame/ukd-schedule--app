@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Typography, Button } from "antd";
 import styeles from "./SelectBy.module.scss";
 import { getRandomElementOfArray } from "../utils/functions";
+import InstallAppBtn from "./InstallAppBtn";
 
 const teachersEmoji = ["👩‍🏫", "🧑‍🏫", "👨‍🏫"];
 const studentsEmoji = ["🧑‍🎓", "👨‍🎓", "👩‍🎓"];
@@ -37,6 +38,10 @@ export default function SelectBy({ setSelectBy }) {
           Student
         </Button>
       </div>
+
+      <br />
+      <br />
+      <InstallAppBtn />
     </>
   );
 }
