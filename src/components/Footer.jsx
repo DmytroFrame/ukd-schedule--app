@@ -51,12 +51,6 @@ export default function Footer() {
         <GlobalOutlined /> Source
       </Link>
 
-      <Text> - </Text>
-
-      <Link href={import.meta.env.VITE_CHAT_LINK} target="_blank">
-        <MessageOutlined /> Chat
-      </Link>
-
       <Modal
         open={isModalOpen}
         centered
