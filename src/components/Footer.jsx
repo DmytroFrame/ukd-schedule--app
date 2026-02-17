@@ -18,7 +18,7 @@ export default function Footer() {
     navigator
       .share({
         title: "Rozklad is here:",
-        url: "https://rozklad.dmytroframe.com",
+        url: "https://ukd-rozklad.pages.dev/",
       })
       .then((err) => console.error(err));
   }
